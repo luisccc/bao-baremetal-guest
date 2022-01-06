@@ -20,7 +20,7 @@
 #include <stdbool.h>
 #include <csrs.h>
 
-#define PLIC_BASE   (0xc000000)
+#define PLIC_BASE   (0xfff1100000)
 #define PLIC_HART_BASE   (PLIC_BASE+0x200000)
 
 #define PLIC_MAX_INTERRUPTS (1024)
