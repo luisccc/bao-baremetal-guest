@@ -1,3 +1,4 @@
+#include <uart.h>
 #include <8250_uart.h>
 
 #define OPENPITON_DEFAULT_UART_ADDR		    0xfff0c2c000
@@ -8,8 +9,11 @@
 
 
 void uart_init(){
-    uart8250_init(OPENPITON_DEFAULT_UART_ADDR, OPENPITON_DEFAULT_UART_FREQ,
-			     OPENPITON_DEFAULT_UART_BAUDRATE, 0, 1);
+    uart8250_init(OPENPITON_DEFAULT_UART_ADDR,
+                  OPENPITON_DEFAULT_UART_REG_SHIFT,
+			      OPENPITON_DEFAULT_UART_BAUDRATE,
+                  OPENPITON_DEFAULT_UART_REG_SHIFT,
+                  OPENPITON_DEFAULT_UART_REG_WIDTH);
 }
 
 void uart_putc(char c)
