@@ -1,3 +1,4 @@
+#include <uart.h>
 #include <8250_uart.h>
 
 #define CVA6_DEFAULT_UART_ADDR		    0x10000000
@@ -8,8 +9,11 @@
 
 
 void uart_init(){
-    uart8250_init(CVA6_DEFAULT_UART_ADDR, CVA6_DEFAULT_UART_REG_SHIFT,
-			     CVA6_DEFAULT_UART_BAUDRATE, 2, 4);
+    uart8250_init(CVA6_DEFAULT_UART_ADDR,
+                  CVA6_DEFAULT_UART_FREQ,
+			      CVA6_DEFAULT_UART_BAUDRATE,
+                  CVA6_DEFAULT_UART_REG_SHIFT,
+                  CVA6_DEFAULT_UART_REG_WIDTH);
 }
 
 void uart_putc(char c)
