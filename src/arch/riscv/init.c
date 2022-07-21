@@ -20,6 +20,7 @@ void arch_init(){
         ret = sbi_hart_start(i, (unsigned long) &_start, 0);
     } while(i++, ret.error == SBI_SUCCESS);
 #endif
+    pt_init();
     plic_init();   
     CSRS(sie, SIE_SEIE);
     CSRS(sstatus, SSTATUS_SIE);

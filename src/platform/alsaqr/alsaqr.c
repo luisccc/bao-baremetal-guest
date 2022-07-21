@@ -1,7 +1,7 @@
 #include <uart.h>
 #include <8250_uart.h>
 
-#define CVA6_DEFAULT_UART_ADDR		    (0x10000000)
+#define CVA6_DEFAULT_UART_ADDR		    (0x40000000)
 #define CVA6_DEFAULT_UART_FREQ		    (50000000)
 #define CVA6_DEFAULT_UART_BAUDRATE		(115200)
 #define CVA6_DEFAULT_UART_REG_SHIFT	    (2)

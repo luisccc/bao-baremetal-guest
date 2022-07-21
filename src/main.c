@@ -43,6 +43,8 @@ void timer_handler(){
     printf("cpu%d: %s\n", get_cpuid(), __func__);
     timer_set(TIMER_INTERVAL);
     irq_send_ipi(1ull << (get_cpuid() + 1));
+    // flush tlb entries
+    asm volatile ("sfence.vma");
 }
 
 void main(void){
@@ -77,5 +79,12 @@ void main(void){
     printf("cpu %d up\n", get_cpuid());
     spin_unlock(&print_lock);
 
-    while(1) wfi();
+    int cpuid = get_cpuid();
+    int count = 0;
+    while(1){
+        spin_lock(&print_lock);
+        printf("cpu%d %d\n", cpuid, count++);
+        spin_unlock(&print_lock);
+        for(int i = 0; i < 10000; i++);
+    }
 }
